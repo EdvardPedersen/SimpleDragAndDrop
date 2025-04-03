@@ -4,10 +4,6 @@ class Movable:
   def __init__(self, rect):
     self.rect = rect
 
-  def draw(self, surface):
-    color = (255, 0, 0)
-    surface.fill(color, self.rect)
-
 class Circle(Movable):
   def draw(self, surface):
     color = (255, 0, 0)
