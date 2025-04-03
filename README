@@ -1,0 +1,10 @@
+# Drag and drop
+
+Vi har fått opp bokser, triangler og sirkler på skjermen, men vi vil ha mulighet til å flytte på de med "dra-og-slipp".
+
+Det er tre events som er intressante:
+- pygame.MOUSEBUTTONDOWN
+- pygame.MOUSEBUTTONUP
+- pygame.MOUSEMOTION
+
+Hvordan kan vi implementere dette?
