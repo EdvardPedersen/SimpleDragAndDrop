@@ -3,6 +3,7 @@ import pygame
 class Movable:
   def __init__(self, rect):
     self.rect = rect
+    self.dragging = False
 
 class Circle(Movable):
   def draw(self, surface):
@@ -29,10 +30,23 @@ class Game:
       self.movables.append(Box(pygame.Rect(x, 300, 50, 50)))
       self.movables.append(Triangle(pygame.Rect(x, 500, 50, 50)))
 
-  def mainloop(self):
+  def update(self):
     for event in pygame.event.get():
       if event.type == pygame.QUIT:
-        exit()
+        return False
+      if event.type == pygame.MOUSEBUTTONDOWN:
+        for movable in self.movables:
+          if movable.rect.collidepoint(event.pos):
+            movable.dragging = True
+      if event.type == pygame.MOUSEBUTTONUP:
+        for movable in self.movables:
+          if movable.dragging:
+            movable.dragging = False
+      if event.type == pygame.MOUSEMOTION:
+        for movable in self.movables:
+          if movable.dragging:
+            movable.rect.x += event.rel[0]
+            movable.rect.y += event.rel[1]
     self.screen.fill((0,0,0))
     for m in self.movables:
       m.draw(self.screen)
@@ -41,5 +55,5 @@ class Game:
 
 if __name__ == "__main__":
   g = Game()
-  while g.mainloop():
+  while g.update():
     pass

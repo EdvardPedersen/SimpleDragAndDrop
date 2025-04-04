@@ -8,3 +8,12 @@ Det er tre events som er intressante:
 - pygame.MOUSEMOTION
 
 Hvordan kan vi implementere dette?
+
+- MOUSEDOWN - Sammenligne posisjon mus vs. posisjon figur
+-- Hvordan huske hvilken figur til neste frame:
+--- Fjerne objektet fra lista over alle objekter
+--- Legge til spesial-objekt som er festet til musa
+--- Boolsk verdi i Movable
+- MOUSEMOTION - Addere posisjon figur og relativ museposisjon
+- MOUSEUP - Sett boolsk verdi til False
+
